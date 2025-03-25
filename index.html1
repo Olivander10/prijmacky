@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijímačkový kvíz</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 15px; }
+        .result { font-weight: bold; margin-top: 20px; }
+        button { padding: 10px; margin-top: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>Prijímačkový kvíz (Biológia & Slovenčina)</h2>
+    <form id="quizForm">
+        
+        <!-- BIOLOGICKÉ OTÁZKY -->
+        <h3>🧬 Biológia</h3>
+
+        <div class="question">
+            <p>1. Ktorý orgán pumpuje krv v tele?</p>
+            <input type="radio" name="q1" value="a"> Pečeň<br>
+            <input type="radio" name="q1" value="b"> Pľúca<br>
+            <input type="radio" name="q1" value="c"> Srdce ✅<br>
+        </div>
+
+        <div class="question">
+            <p>2. Ktorá látka prenáša kyslík v krvi?</p>
+            <input type="radio" name="q2" value="a"> Hemoglobín ✅<br>
+            <input type="radio" name="q2" value="b"> Inzulín<br>
+            <input type="radio" name="q2" value="c"> Cholesterol<br>
+        </div>
+
+        <div class="question">
+            <p>3. Ako sa nazýva proces získavania energie z potravy?</p>
+            <input type="radio" name="q3" value="a"> Dýchanie ✅<br>
+            <input type="radio" name="q3" value="b"> Fotosyntéza<br>
+            <input type="radio" name="q3" value="c"> Osmóza<br>
+        </div>
+
+        <div class="question">
+            <p>4. Ktorá časť mozgu je zodpovedná za pamäť?</p>
+            <input type="radio" name="q4" value="a"> Mozoček<br>
+            <input type="radio" name="q4" value="b"> Hipokampus ✅<br>
+            <input type="radio" name="q4" value="c"> Hypotalamus<br>
+        </div>
+
+        <div class="question">
+            <p>5. Aká je hlavná funkcia obličiek?</p>
+            <input type="radio" name="q5" value="a"> Filtrácia krvi ✅<br>
+            <input type="radio" name="q5" value="b"> Tvorba hormónov<br>
+            <input type="radio" name="q5" value="c"> Regulácia telesnej teploty<br>
+        </div>
+
+        <h3>📖 Slovenčina</h3>
+
+        <div class="question">
+            <p>16. Aké i/y sa píše v slove „m_núť“?</p>
+            <input type="radio" name="q16" value="a"> i<br>
+            <input type="radio" name="q16" value="b"> y ✅<br>
+            <input type="radio" name="q16" value="c"> obe sú správne<br>
+        </div>
+
+        <div class="question">
+            <p>17. Aký druh slova je „krásne“?</p>
+            <input type="radio" name="q17" value="a"> Príslovka ✅<br>
+            <input type="radio" name="q17" value="b"> Prídavné meno<br>
+            <input type="radio" name="q17" value="c"> Podstatné meno<br>
+        </div>
+
+        <div class="question">
+            <p>18. Kto napísal dielo „Jánošík“?</p>
+            <input type="radio" name="q18" value="a"> Ján Botto ✅<br>
+            <input type="radio" name="q18" value="b"> P. O. Hviezdoslav<br>
+            <input type="radio" name="q18" value="c"> Martin Kukučín<br>
+        </div>
+
+        <div class="question">
+            <p>19. Čo je antonymum slova „tichý“?</p>
+            <input type="radio" name="q19" value="a"> Hlučný ✅<br>
+            <input type="radio" name="q19" value="b"> Pokojný<br>
+            <input type="radio" name="q19" value="c"> Jemný<br>
+        </div>
+
+        <div class="question">
+            <p>20. Aký druh viet vyjadruje rozkaz?</p>
+            <input type="radio" name="q20" value="a"> Opytovacie<br>
+            <input type="radio" name="q20" value="b"> Rozkazovacie ✅<br>
+            <input type="radio" name="q20" value="c"> Oznamovacie<br>
+        </div>
+
+        <button type="button" onclick="vyhodnotitQuiz()">Odoslať</button>
+    </form>
+
+    <p class="result" id="result"></p>
+
+    <script>
+        function vyhodnotitQuiz() {
+            let spravneOdpovede = {
+                q1: "c", q2: "a", q3: "a", q4: "b", q5: "a",
+                q16: "b", q17: "a", q18: "a", q19: "a", q20: "b"
+            };
+            let body = 0;
+
+            for (let otazka in spravneOdpovede) {
+                let odpoved = document.querySelector('input[name="'+otazka+'"]:checked');
+                if (odpoved && odpoved.value === spravneOdpovede[otazka]) {
+                    body++;
+                }
+            }
+
+            document.getElementById("result").textContent = "Tvoj výsledok: " + body + " / 10";
+        }
+    </script>
+
+</body>
+</html>
